@@ -1,0 +1,21 @@
+close_to_open = { ")" : "(", "]" : "[", "}" : "{" }
+
+def valid_braces(string):
+
+    stack = []
+    for c in string:
+        if c in close_to_open:
+            if stack and stack[-1] == close_to_open[c]: # if value is equal to last value in the list (stack[-1])
+                stack.pop()                             # so these values will be removed from stack
+
+            else:
+                return False
+
+        else:
+            stack.append(c)
+
+    if not stack:
+        return True  # True is when the stack is empty
+    else:
+        return False
+
